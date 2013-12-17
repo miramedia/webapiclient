@@ -325,7 +325,7 @@ class GFWebAPIWrapper{
 
     //------------------- HELPER METHODS ---------------------------------------
 
-    private function prepare_response($raw_response){
+    protected function prepare_response($raw_response){
 
         if(is_wp_error($raw_response))
             return new GFWebAPIError($raw_response->get_error_code(), $raw_response->get_error_message(), $raw_response->get_error_data());
@@ -356,7 +356,7 @@ class GFWebAPIWrapper{
         return $response;
     }
 
-    private function send_request($method, $route, $query=null, $body=null){
+    protected function send_request($method, $route, $query=null, $body=null){
 
         $url = $this->get_url($method, $route, $query);
 
